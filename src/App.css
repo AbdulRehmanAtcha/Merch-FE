@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: lightgray;
+    overflow-x: hidden;
+}
+
+.admin-main {
+    margin-top: 20px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.admin-header button {
+    height: 40px;
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.admin-main h1 {
+    text-align: center;
+}
+
+table {
+    padding: 2px 5px;
+}
+
+th,
+td {
+    width: 20vw;
+    border: 1px solid white;
+    height: 40px;
+}
+
+td {
+    text-align: center;
+}
+
+.action-buttons {
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-buttons button {
+    height: 30px;
+    width: 100px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.action-buttons button:first-child {
+    background-color: green;
+}
+
+.action-buttons button:nth-child(2) {
+    background-color: red;
+}
+
+.add-product {
+    width: 98vw;
+    height: 99vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-form {
+    width: 450px;
+    min-height: 400px;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 0px 10px;
+    justify-content: center;
+}
+
+.add-form div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+}
+
+.add-form div input {
+    height: 30px;
+    padding: 5px;
+}
+
+.add-form button {
+    height: 30px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.rodal-dialog .rodal-zoom-enter {
+    min-height: 320px !important;
+    background-color: white;
+}
+
+
+.header {
+    background-color: white;
+    height: 35px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge-parent {
+    position: relative;
+    cursor: pointer;
+}
+
+.badge {
+    width: 21px;
+    height: 19px;
+    position: absolute;
+    right: -13px;
+    top: -8px;
+    background-color: red;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.prodcuts-conatiner {
+    display: flex;
+    column-gap: 170px;
+    align-items: center;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+
+.product {
+    min-width: 25vw;
+    height: 300px;
+    background-color: white;
+    padding: 10px;
+    -webkit-box-shadow: -5px 9px 20px 0px rgba(110,110,110,0.56);
+    -moz-box-shadow: -5px 9px 20px 0px rgba(110,110,110,0.56);
+    box-shadow: -5px 9px 20px 0px rgba(110,110,110,0.56);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.product>img {
+    width: 100%;
+    height: 55%;
+}
+
+.product>button {
+    width: 100%;
+    height: 40px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled{
+    background-color: azure;
+    cursor: not-allowed;
+    color: black;
+}
+
+.cart-parent{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart{
+    width: 90%;
+    height: 80vh;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-left{
+    width: 60%;
+    height: 60%;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.cart-right{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 50%;
+}
+
+.cart-right button{
+    width: 200px;
+    background-color: rgb(30, 122, 30);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+.cart-left table th, .cart-left table td{
+    border: 1px solid gray;
+}
+
+.cart-left>a>button{
+    background-color: rgb(24, 156, 12);
+    height: 40px;
+    width: 100px;
+    padding: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 20px 0px;
+}
+
+.danger{
+    background-color: red;
+    color: white;
+}
+
+.danger button{
+    background-color: white !important;
+    color: red !important;
+}
