@@ -1,68 +1,69 @@
-import React, { useEffect, useState } from 'react'
-import { useExpenseHandlerMutation } from '../redux/api'
+import React, { useEffect, useState } from 'react';
+import { useExpenseHandlerMutation } from '../redux/api';
 
 const Expense = ({ onClose }) => {
     const [expenseData, setExpenseData] = useState({
         expenseCost: "",
         method: "",
         description: ""
-    })
+    });
 
-    const [content, { isSuccess }] = useExpenseHandlerMutation()
+    const [content, { isSuccess }] = useExpenseHandlerMutation();
 
     const HandleChange = (e) => {
-        const { name, value } = e.target
+        const { name, value } = e.target;
         setExpenseData((prodData) => ({
             ...prodData,
             [name]: value
-        }))
-    }
+        }));
+    };
 
     const SubmitHandler = (e) => {
         e.preventDefault();
-        content(expenseData)
-    }
+        content(expenseData);
+    };
 
     useEffect(() => {
         if (isSuccess) {
             setExpenseData({
-                productDiscount: "",
-                productId: ""
+                expenseCost: "",
+                method: "",
+                description: ""
             });
-            onClose()
+            onClose();
         }
-    }, [isSuccess])
+    }, [isSuccess]);
+
     return (
-        <form style={{ display: 'flex', flexDirection: "column", rowGap: "10px", width: "100%" }}>
+        <form style={{ display: 'flex', flexDirection: "column", rowGap: "10px", width: "100%" }} onSubmit={SubmitHandler}>
             <div style={{ display: 'flex', flexDirection: "column", rowGap: "10px" }}>
                 <label>Expense Cost</label>
-                <input type="number" name="expenseCost" placeholder='Enter Expense Cost' onChange={(e) => HandleChange(e)} />
+                <input type="number" name="expenseCost" value={expenseData.expenseCost} placeholder='Enter Expense Cost' onChange={HandleChange} />
             </div>
             <div>
                 <div style={{ display: 'flex', flexDirection: "row", columnGap: "4px" }}>
-                    <input type="radio" name="method" value="Cash" id='cash' onChange={(e) => HandleChange(e)} />
-                    <label htmlFor='cash' >Cash</label>
+                    <input type="radio" name="method" value="Cash" id='cash' checked={expenseData.method === "Cash"} onChange={HandleChange} />
+                    <label htmlFor='cash'>Cash</label>
                 </div>
                 <div style={{ display: 'flex', flexDirection: "row", columnGap: "4px" }}>
-                    <input id='credit' type="radio" name="method" value="Credit" onChange={(e) => HandleChange(e)} />
-                    <label htmlFor='credit' >Credit</label>
+                    <input id='credit' type="radio" name="method" value="Credit" checked={expenseData.method === "Credit"} onChange={HandleChange} />
+                    <label htmlFor='credit'>Credit</label>
                 </div>
             </div>
             <hr />
-            {/* <input type="text" name="description" placeholder='Small Description' onChange={(e) => HandleChange(e)} /> */}
             <div>
                 <div style={{ display: 'flex', flexDirection: "row", columnGap: "4px" }}>
-                    <input type="radio" name="description" value="Buy Stock" id='stock' onChange={(e) => HandleChange(e)} />
-                    <label htmlFor='stock' >Buy Stock</label>
+                    <input type="radio" name="description" value="Buy Stock" id='stock' checked={expenseData.description === "Buy Stock"} onChange={HandleChange} />
+                    <label htmlFor='stock'>Buy Stock</label>
                 </div>
                 <div style={{ display: 'flex', flexDirection: "row", columnGap: "4px" }}>
-                    <input id='bill' type="radio" name="description" value="Bill"  onChange={(e) => HandleChange(e)} />
-                    <label htmlFor='bill' >Utility Bill</label>
+                    <input id='bill' type="radio" name="description" value="Bill" checked={expenseData.description === "Bill"} onChange={HandleChange} />
+                    <label htmlFor='bill'>Utility Bill</label>
                 </div>
             </div>
-            <button onClick={SubmitHandler} style={{ height: "35px", width: "100%", cursor: "pointer" }}>Add Expense</button>
+            <button type="submit" style={{ height: "35px", width: "100%", cursor: "pointer" }}>Add Expense</button>
         </form>
-    )
-}
+    );
+};
 
-export default Expense
+export default Expense;

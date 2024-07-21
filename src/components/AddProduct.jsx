@@ -8,6 +8,7 @@ const AddProduct = () => {
     const [productData, setProductData] = useState({
         productName: "",
         productBasePrice: "",
+        productSellPrice: "",
         productQuantity: "",
         productImage: ""
     })
@@ -33,6 +34,7 @@ const AddProduct = () => {
         const formData = new FormData();
         formData.append('productName', productData.productName);
         formData.append('productBasePrice', productData.productBasePrice);
+        formData.append('productSellPrice', productData.productSellPrice);
         formData.append('productQuantity', productData.productQuantity);
         if (productData.productImage) {
             formData.append('productImage', productData.productImage);
@@ -59,8 +61,12 @@ const AddProduct = () => {
                     <input type="text" id='pName' name='productName' placeholder='Enter Product Name' required onChange={(e) => HandleChange(e)} />
                 </div>
                 <div>
-                    <label htmlFor="pPrice">Product Price</label>
-                    <input type="number" min={1} id='pPrice' name='productBasePrice' placeholder='Enter Product Price' required onChange={(e) => HandleChange(e)} />
+                    <label htmlFor="pPrice">Product Price (Purchased)</label>
+                    <input type="number" min={1} id='pPrice' name='productBasePrice' placeholder='Enter Product Purchased Price' required onChange={(e) => HandleChange(e)} />
+                </div>
+                <div>
+                    <label htmlFor="sPrice">Product Price (To Sell)</label>
+                    <input type="number" min={1} id='sPrice' name='productSellPrice' placeholder='Enter Product Sell Price ' required onChange={(e) => HandleChange(e)} />
                 </div>
                 <div>
                     <label htmlFor="pQuantity">Product Quantity</label>

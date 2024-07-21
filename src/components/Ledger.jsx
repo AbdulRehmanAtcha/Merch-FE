@@ -49,19 +49,13 @@ const Sheet = () => {
             </thead>
             <tbody>
                 {data?.data?.map((item, index) => (
-                    item?.totalPrice ?
+                    item?.description === 'Buy Stock' ?
                         <>
-                            <tr key={`inventory-debit-${index}`}>
+                            <tr key={`utility-debit-${index}`}>
+                                <td>{item?.expenseCost}</td>
                                 <td></td>
-                                <td>{item?.totalPrice}</td>
                             </tr>
-                        </> : item?.description === 'Buy Stock' ?
-                            <>
-                                <tr key={`inventory-purchase-${index}`}>
-                                    <td>{item?.expenseCost}</td>
-                                    <td></td>
-                                </tr>
-                            </> : null
+                        </> : null
                 ))}
             </tbody>
         </table>
@@ -103,7 +97,28 @@ const Sheet = () => {
                         <>
                             <tr key={`utility-debit-${index}`}>
                                 <td></td>
-                                <td>{item?.expenseCost}</td>
+                                <td>{item?.expenseCost} (Utility {item?.description})</td>
+                            </tr>
+                        </> : null
+                ))}
+            </tbody>
+        </table>
+    );
+    const renderRevenueTable = () => (
+        <table>
+            <thead>
+                <tr>
+                    <th>Debit</th>
+                    <th>Credit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {data?.data?.map((item, index) => (
+                    item?.totalProfit ?
+                        <>
+                            <tr key={`utility-debit-${index}`}>
+                                <td></td>
+                                <td>{item?.totalProfit}</td>
                             </tr>
                         </> : null
                 ))}
@@ -118,14 +133,28 @@ const Sheet = () => {
             <br />
             <hr />
             <br />
-            <h2>Cash Table</h2>
-            {renderCashTable()}
-            <h2>Inventory Table</h2>
-            {renderInventoryTable()}
-            <h2>Utility Table</h2>
-            {renderUtilityTable()}
-            <h2>Account Payable Table</h2>
-            {renderAccPayableTable()}
+            <div style={{ display: "flex", rowGap: "15px", flexWrap: "wrap", columnGap:"25px", alignItems:"center" }}>
+                <div>
+                    <h2>Cash Table</h2>
+                    {renderCashTable()}
+                </div>
+                <div>
+                    <h2>Revenue Table</h2>
+                    {renderRevenueTable()}
+                </div>
+                <div>
+                    <h2>Inventory Table</h2>
+                    {renderInventoryTable()}
+                </div>
+                <div>
+                    <h2>Utility Table</h2>
+                    {renderUtilityTable()}
+                </div>
+                <div>
+                    <h2>Account Payable Table</h2>
+                    {renderAccPayableTable()}
+                </div>
+            </div>
         </div>
     );
 };

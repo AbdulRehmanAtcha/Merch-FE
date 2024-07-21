@@ -34,6 +34,14 @@ export const productsApi = api.injectEndpoints({
             }),
             invalidatesTags: ['products'],
         }),
+        removeDiscount: builder.mutation({
+            query: (content) => ({
+                url: "/api/v1/admin/dicount-remove",
+                method: "PUT",
+                body: content
+            }),
+            invalidatesTags: ['products'],
+        }),
         orderHandler: builder.mutation({
             query: (content) => ({
                 url: "/api/v1/order/new-order",
@@ -55,6 +63,7 @@ export const productsApi = api.injectEndpoints({
                 method: "POST",
                 body: content
             }),
+            invalidatesTags:["expense"]
         }),
         // expenseHandler: builder.mutation({
         //     query: (content) => ({
@@ -67,6 +76,7 @@ export const productsApi = api.injectEndpoints({
             query: () => ({
                 url: "/api/v1/admin/sheet",
             }),
+            providesTags: ["expense"]
         }),
 
         ledgerHandler: builder.query({
@@ -80,7 +90,7 @@ export const productsApi = api.injectEndpoints({
 })
 
 
-export const { useAllProductsQuery, useAddProductMutation, useUpdateStockMutation, useDeleteProductMutation, useOrderHandlerMutation, useDiscountHandlerMutation, useExpenseHandlerMutation, useSheetHandlerQuery, useLedgerHandlerQuery } = productsApi
+export const { useAllProductsQuery, useAddProductMutation, useUpdateStockMutation, useDeleteProductMutation, useOrderHandlerMutation, useDiscountHandlerMutation, useExpenseHandlerMutation, useSheetHandlerQuery, useLedgerHandlerQuery, useRemoveDiscountMutation } = productsApi
 
 
 

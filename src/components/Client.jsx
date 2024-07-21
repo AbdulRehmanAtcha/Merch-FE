@@ -46,7 +46,7 @@ const Client = () => {
                                 onClick={() => dispatch(addToCart({
                                     productImage: item.productImage,
                                     productName: item.productName,
-                                    productFinalPrice: item.productFinalPrice,
+                                    productFinalPrice: Number(item.productFinalPrice),
                                     _id: item._id
                                 }))}
                                 disabled={isDisabled} // Disable the button if the condition is true

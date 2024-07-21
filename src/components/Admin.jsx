@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAllProductsQuery, useDeleteProductMutation } from '../redux/api'
+import { useAllProductsQuery, useDeleteProductMutation, useRemoveDiscountMutation } from '../redux/api'
 import { Link } from 'react-router-dom'
 import Modal from './Modal'
 import AddQuantity from './AddQuantity'
@@ -11,6 +11,7 @@ import Expense from './Expense'
 const Admin = () => {
     const { data: apiData, isLoading, isSuccess, isError } = useAllProductsQuery()
     const [content] = useDeleteProductMutation()
+    const [content2] = useRemoveDiscountMutation()
     const [activeId, setActiveId] = useState("")
     const [modalOpen, setModalOpen] = useState(false)
     const [discountModal, setDiscountModal] = useState(false)
@@ -31,6 +32,10 @@ const Admin = () => {
 
     const DeleteHandler = (id) => {
         content({ productId: id })
+    }
+
+    const RemoveDiscountHandler = (id) => {
+        content2({ prodId: id })
     }
 
     if (isLoading) {
@@ -76,6 +81,7 @@ const Admin = () => {
                             <td className='action-buttons'>
                                 <button onClick={() => StockHandler(item?._id)}>Add Stock</button>
                                 <button onClick={() => DeleteHandler(item?._id)}>Delete</button>
+                                {item?.productDiscount !== 0 && <button onClick={() => RemoveDiscountHandler(item?._id)}>Remove Discount</button>}
                             </td>
                         </tr>
                     ))}

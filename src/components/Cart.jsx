@@ -10,10 +10,17 @@ const Cart = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [content, { isLoading, isSuccess }] = useOrderHandlerMutation()
+
     const OrderHandler = () => {
-        const order = { cart, totalPrice, totalItems }
-        content(order)
-    }
+        const totalPriceNumber = Number(totalPrice);
+        // if (isNaN(totalPriceNumber)) {
+        //     throw new Error("Invalid total price");
+        // }
+
+        const order = { cart, totalPrice: totalPriceNumber, totalItems };
+        content(order);
+    };
+
 
 
     useEffect(() => {
@@ -59,7 +66,7 @@ const Cart = () => {
                                                 <button onClick={() => dispatch(addToCart({
                                                     productImage: item.productImage,
                                                     productName: item.productName,
-                                                    productFinalPrice: item.productFinalPrice,
+                                                    productFinalPrice: Number(item.productFinalPrice),
                                                     _id: item._id
                                                 }))}
                                                     disabled={isDisabled}

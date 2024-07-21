@@ -58,10 +58,12 @@ td {
 
 .action-buttons button {
     height: 30px;
-    width: 100px;
+    width: fit-content;
     color: white;
     cursor: pointer;
     border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 
 .action-buttons button:first-child {
@@ -70,6 +72,9 @@ td {
 
 .action-buttons button:nth-child(2) {
     background-color: red;
+}
+.action-buttons button:nth-child(3) {
+    background-color: rgb(44, 44, 16);
 }
 
 .add-product {
@@ -88,7 +93,7 @@ td {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    padding: 0px 10px;
+    padding: 20px 10px;
     justify-content: center;
 }
 
