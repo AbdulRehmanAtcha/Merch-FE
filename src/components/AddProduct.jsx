@@ -46,8 +46,16 @@ const AddProduct = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            console.log("Success")
-            navigate("/admin")
+            alert("Product Added Successfully");
+            productData.productBasePrice = "";
+            productData.productImage = "";
+            productData.productName = "";
+            productData.productQuantity = "";
+            productData.productSellPrice = ""
+
+            setTimeout(() => {
+                navigate("/admin")
+            }, 500)
         }
         if (isError) {
             console.log("Error")

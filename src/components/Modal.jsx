@@ -8,7 +8,8 @@ const Modal = ({ modalIsOpen, onClose, children }) => {
         // padding: dashboard ? "20px 20px" : "20px",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        padding:"40px 20px",
     };
     return (
         <div>

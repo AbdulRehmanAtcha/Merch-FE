@@ -27,6 +27,7 @@ const Discount = ({ onClose }) => {
                 productDiscount: "",
                 productId: ""
             });
+            alert("Discount Added Successfully");
             onClose()
         }
     }, [isSuccess])
@@ -42,7 +43,7 @@ const Discount = ({ onClose }) => {
                     <input style={{ height: "35px", width: "100%" }} type="text" id='pId' name='productId' placeholder='Enter Product ID' required onChange={(e) => HandleChange(e)} value={productData?.productId} />
                 </div>
             </div>
-            <button style={{ height: "35px", width: "100%", cursor: "pointer" }} onClick={SubmitHandler}>Update Quantity</button>
+            <button style={{ height: "35px", width: "100%", cursor: "pointer" }} onClick={SubmitHandler}>Update Discount</button>
         </form>
     )
 }

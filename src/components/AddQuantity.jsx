@@ -19,10 +19,9 @@ const AddQuantity = ({ productId, onClose }) => {
 
     useEffect(() => {
         if (isSuccess) {
-            console.log("Success")
-            onClose()
-            navigate("/admin", { replace: true });
+            alert("Stock Added Successfully")
         }
+        onClose()
         if (isError) {
             console.log("Error")
         }

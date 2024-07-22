@@ -30,6 +30,7 @@ const Expense = ({ onClose }) => {
                 method: "",
                 description: ""
             });
+            alert("Expense Added Successfully");
             onClose();
         }
     }, [isSuccess]);
@@ -38,9 +39,10 @@ const Expense = ({ onClose }) => {
         <form style={{ display: 'flex', flexDirection: "column", rowGap: "10px", width: "100%" }} onSubmit={SubmitHandler}>
             <div style={{ display: 'flex', flexDirection: "column", rowGap: "10px" }}>
                 <label>Expense Cost</label>
-                <input type="number" name="expenseCost" value={expenseData.expenseCost} placeholder='Enter Expense Cost' onChange={HandleChange} />
+                <input type="number" name="expenseCost" value={expenseData.expenseCost} placeholder='Enter Expense Cost' onChange={HandleChange} style={{ height: "35px" }} />
             </div>
             <div>
+                <h3>Expense Payment Method</h3>
                 <div style={{ display: 'flex', flexDirection: "row", columnGap: "4px" }}>
                     <input type="radio" name="method" value="Cash" id='cash' checked={expenseData.method === "Cash"} onChange={HandleChange} />
                     <label htmlFor='cash'>Cash</label>
@@ -52,6 +54,7 @@ const Expense = ({ onClose }) => {
             </div>
             <hr />
             <div>
+                <h3>Expense Name</h3>
                 <div style={{ display: 'flex', flexDirection: "row", columnGap: "4px" }}>
                     <input type="radio" name="description" value="Buy Stock" id='stock' checked={expenseData.description === "Buy Stock"} onChange={HandleChange} />
                     <label htmlFor='stock'>Buy Stock</label>

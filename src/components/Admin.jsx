@@ -68,7 +68,8 @@ const Admin = () => {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Price</th>
+                        <th>Price (Purchased)</th>
+                        <th>Price (To Sell)</th>
                         <th>Quantity Left</th>
                         <th>Actions</th>
                     </tr>
@@ -76,6 +77,7 @@ const Admin = () => {
                         <tr key={index} className={`${item?.productQuantity === 0 ? "danger" : ""}`}>
                             <td>{item?._id}</td>
                             <td>{item?.productName}</td>
+                            <td>{item?.productBasePrice}</td>
                             <td>{item?.productFinalPrice} {item?.productDiscount !== 0 ? `(${item?.productDiscount + "% Discount)"}` : ""}</td>
                             <td>{item?.productQuantity}</td>
                             <td className='action-buttons'>
