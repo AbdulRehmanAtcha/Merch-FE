@@ -25,6 +25,7 @@ const Sheet = () => {
                                 <td></td>
                             </tr>
 
+                            {/* Expense Case */}
                         </> : item?.method === 'Cash' ?
                             <>
 
@@ -39,6 +40,7 @@ const Sheet = () => {
         </table>
     );
 
+    // Invenotry will be debited for every purchase we make
     const renderInventoryTable = () => (
         <table>
             <thead>
@@ -97,7 +99,7 @@ const Sheet = () => {
                         <>
                             <tr key={`utility-debit-${index}`}>
                                 <td></td>
-                                <td>{item?.expenseCost} (Utility {item?.description})</td>
+                                <td>{item?.expenseCost} ({item?.description})</td>
                             </tr>
                         </> : null
                 ))}
@@ -133,7 +135,7 @@ const Sheet = () => {
             <br />
             <hr />
             <br />
-            <div style={{ display: "flex", rowGap: "15px", flexWrap: "wrap", columnGap:"25px", alignItems:"center" }}>
+            <div style={{ display: "flex", rowGap: "15px", flexWrap: "wrap", columnGap: "25px", alignItems: "center" }}>
                 <div>
                     <h2>Cash Table</h2>
                     {renderCashTable()}

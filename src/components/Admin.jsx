@@ -54,7 +54,7 @@ const Admin = () => {
                         <button>Add New Product</button>
                     </Link>
                     <button onClick={() => setDiscountModal(true)}>Add Discount</button>
-                    <button onClick={() => setExpenseModal(true)}>Add Expense</button>
+                    <button onClick={() => setExpenseModal(true)}>Report Expense</button>
                     <Link to={"/sheet"}>
                         <button>View Balance Sheet</button>
                     </Link>

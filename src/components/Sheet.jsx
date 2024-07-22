@@ -99,10 +99,7 @@ const Sheet = () => {
                     ))} */}
 
                     {data?.data?.map((item, index) => {
-                        // Destructure for better readability
                         const { totalPrice, expenseCost, description, method } = item || {};
-
-                        // Render rows based on the item properties
                         if (totalPrice) {
                             return (
                                 <>
@@ -119,6 +116,9 @@ const Sheet = () => {
                                 </>
                             );
                         }
+
+                        // For Amount paid in cash
+
 
                         if (description === "Buy Stock" && method === "Cash") {
                             return (
@@ -137,6 +137,8 @@ const Sheet = () => {
                             );
                         }
 
+                        // For Account Payable
+
                         if (description === "Buy Stock" && method === "Credit") {
                             return (
                                 <>
@@ -153,6 +155,8 @@ const Sheet = () => {
                                 </>
                             );
                         }
+
+                        // For Amount paid in cash
 
                         if (description === "Bill" && method === "Cash") {
                             return (
@@ -171,6 +175,7 @@ const Sheet = () => {
                             );
                         }
 
+                        // For Account Payable
                         if (description === "Bill" && method === "Credit") {
                             return (
                                 <>
@@ -187,8 +192,6 @@ const Sheet = () => {
                                 </>
                             );
                         }
-
-                        // Return null or a default element if none of the conditions are met
                         return null;
                     })}
 
