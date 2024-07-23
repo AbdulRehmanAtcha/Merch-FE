@@ -31,15 +31,16 @@ const Client = () => {
                     <h2>Rs: 3,000</h2>
                     <button>Add To Cart</button>
                 </div> */}
-                
+
                 {products?.data?.map((item, index) => {
                     const cartItem = cart.find(cartItem => cartItem._id === item._id);
                     const isDisabled = cartItem && cartItem.quantity >= item.productQuantity || item?.productQuantity === 0;
 
                     return (
-                        <div className="product" key={index}>
-                            <img src={item?.productImage} alt="" />
-                            <hr />
+                        <div className="product-card" key={index}>
+                            <div className="product-img">
+                                <img src={item?.productImage} alt="" />
+                            </div>
                             <h1>{item?.productName}</h1>
                             <h2>Rs: {item?.productFinalPrice} {item?.productDiscount !== 0 ? `(${item?.productDiscount + "% Discount)"}` : ""}</h2>
                             <button
@@ -53,6 +54,22 @@ const Client = () => {
                             >
                                 {isDisabled ? "Out of Stock" : "Add To Cart"}
                             </button>
+
+                            {/* <img src={item?.productImage} alt="" />
+                            <hr />
+                            <h1>{item?.productName}</h1>
+                            <h2>Rs: {item?.productFinalPrice} {item?.productDiscount !== 0 ? `(${item?.productDiscount + "% Discount)"}` : ""}</h2>
+                            <button
+                                onClick={() => dispatch(addToCart({
+                                    productImage: item.productImage,
+                                    productName: item.productName,
+                                    productFinalPrice: Number(item.productFinalPrice),
+                                    _id: item._id
+                                }))}
+                                disabled={isDisabled} // Disable the button if the condition is true
+                            >
+                                {isDisabled ? "Out of Stock" : "Add To Cart"}
+                            </button> */}
                         </div>
                     );
                 })}

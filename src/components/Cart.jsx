@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, decrementFromCart } from '../redux/reducer'
+import { addToCart, decrementFromCart, resetCart } from '../redux/reducer'
 import Header from './Header'
 import { Link, useNavigate } from 'react-router-dom'
 import { useOrderHandlerMutation } from '../redux/api'
@@ -25,7 +25,8 @@ const Cart = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            alert("Your Order Created Successfully")
+            alert("Your Order Created Successfully");
+            dispatch(resetCart());
             setTimeout(() => {
                 navigate("/")
             }, 2000)
@@ -34,13 +35,18 @@ const Cart = () => {
     return (
         <>
             <Header />
-            <div className='cart-parent'>
+            {cart?.length === 0 ? <div style={{ height: "90vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", rowGap:"10px" }}>
+                <h1>Your Cart Is Empty</h1>
+                <Link to={"/"}>
+                    <button style={{width:"200px", backgroundColor:"rgb(30, 122, 30)", height:"50px", color:"white", border:"none", cursor:"pointer"}}>Continue Shopping</button>
+                </Link>
+            </div> : <div className='cart-parent'>
                 <div className="cart">
                     <div className="cart-left">
                         <h1>Your Cart</h1>
                         <h2>Total Price: {totalPrice}</h2>
                         <Link to={"/"}>
-                            <button>Go Back</button>
+                            <button>Continue Shopping</button>
                         </Link>
                         <table>
                             <thead>
@@ -83,7 +89,7 @@ const Cart = () => {
                         <button onClick={OrderHandler}>Confirm Order</button>
                     </div>
                 </div>
-            </div>
+            </div>}
         </>
     )
 }

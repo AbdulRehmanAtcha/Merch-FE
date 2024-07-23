@@ -9,7 +9,7 @@ const Header = () => {
 
     return (
         <div className="header">
-            <h1>XYZ Store</h1>
+            <h1>Sports Shop</h1>
             <Link to={"/cart"}>
                 <div className='badge-parent'>
                     <img src={trolley} alt="Cart" style={{ height: "30px", width: "30px" }} />

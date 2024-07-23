@@ -53,11 +53,16 @@ export const myReducer = createSlice({
                     totalPrice: state.totalPrice - existingItem.productFinalPrice
                 };
             }
-        }
+        },
+        resetCart: (state) => {
+            state.cart = [];
+            state.totalPrice = 0;
+            state.totalItems = 0;
+        },
     }
 })
 
-export const { setProducts, addToCart, decrementFromCart } = myReducer.actions;
+export const { setProducts, addToCart, decrementFromCart, resetCart } = myReducer.actions;
 
 // Reducer function
 export default myReducer.reducer;
